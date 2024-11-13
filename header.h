@@ -34,6 +34,12 @@ namespace max
     void run();
 }
 
+namespace farzaan
+{
+    void init();
+    void run();
+}
+
 namespace shared
 {
     struct SharedData
