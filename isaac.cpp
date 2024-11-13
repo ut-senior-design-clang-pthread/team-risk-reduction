@@ -12,6 +12,12 @@ namespace
     {
         auto *data = static_cast<shared::SharedData*>(shared_mem);
         std::print("{}", data->as_string_view());
+
+        if (shared_mem)
+        {
+            isaac::init();
+            memset(shared_mem, 0, shared::SharedData::size);
+        }
         return nullptr;
     }
 }
