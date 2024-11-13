@@ -3,3 +3,18 @@
 //
 
 #include "header.h"
+
+namespace
+{
+
+}
+
+void isaac::init()
+{
+
+}
+
+void isaac::run()
+{
+
+}
