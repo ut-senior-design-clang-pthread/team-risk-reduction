@@ -27,5 +27,5 @@ void victoria::init()
 
 void victoria::run()
 {
-
+    pthread_join(vt1, nullptr);
 }
