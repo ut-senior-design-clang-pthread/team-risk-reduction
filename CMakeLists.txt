@@ -6,7 +6,8 @@ set(CMAKE_CXX_STANDARD 23)
 option(ENABLE_THREAD_SANITIZER "Compile the project with ThreadSanitizer" OFF)
 
 add_executable(team_risk_reduction main.cpp
-        isaac.cpp timothy.cpp victoria.cpp)
+        isaac.cpp timothy.cpp victoria.cpp
+        max.cpp)
 target_link_options(team_risk_reduction PRIVATE "-lpthread")
 
 target_precompile_headers(team_risk_reduction PRIVATE header.h)
