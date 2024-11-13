@@ -24,7 +24,7 @@ namespace
     {
         SharedData *shared_mem = nullptr;
 
-        shared_mem = (SharedData*) mmap(nullptr, SharedData::size, PROT_WRITE | PROT_READ, MAP_SHARED | MAP_ANONYMOUS, -1, 0);
+        shared_mem = static_cast<SharedData*>(mmap(nullptr, SharedData::size, PROT_WRITE | PROT_READ, MAP_SHARED | MAP_ANONYMOUS, -1, 0));
 
         if (shared_mem == MAP_FAILED)
         {
@@ -37,6 +37,12 @@ namespace
 }
 
     SharedData *const data = init();
+
+
+    std::string_view SharedData::as_string_view() const
+    {
+        return {static_cast<const char*>(this->memory), size};
+    }
 
 }
 

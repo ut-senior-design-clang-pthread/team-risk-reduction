@@ -39,6 +39,8 @@ namespace shared
     {
         void *memory;
         static constexpr size_t size = 131'072;
+
+        std::string_view as_string_view() const;
     };
 
     extern SharedData *const data;
