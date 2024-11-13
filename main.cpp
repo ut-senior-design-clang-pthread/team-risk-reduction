@@ -41,7 +41,7 @@ namespace
 
     std::string_view SharedData::as_string_view() const
     {
-        return {static_cast<const char*>(this->memory), size};
+        return {reinterpret_cast<const char*>(this)};
     }
 
 }

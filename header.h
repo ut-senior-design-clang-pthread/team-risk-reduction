@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <pthread.h>
 #include <sys/mman.h>
+#include <string.h>
 
 #include <print>
 
@@ -37,7 +38,6 @@ namespace shared
 {
     struct SharedData
     {
-        void *memory;
         static constexpr size_t size = 131'072;
 
         std::string_view as_string_view() const;
