@@ -5,6 +5,7 @@
 
 #include <unistd.h>
 #include <pthread.h>
+#include <sys/mman.h>
 
 #include <print>
 
@@ -30,4 +31,17 @@ namespace max
 {
     void init();
     void run();
+}
+
+namespace shared
+{
+    struct SharedData
+    {
+        void *memory;
+        static constexpr size_t size = 131'072;
+    };
+
+    extern SharedData *const data;
+
+    SharedData* init();
 }
