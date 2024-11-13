@@ -4,13 +4,28 @@
 
 #include "header.h"
 
-namespace {}
+namespace {
+    pthread_t thread;
+
+    void *worker(void* memory) {
+        // Now write some data into the shared memory
+        const char* message = "Hello from the max worker thread using mmap!";
+        std::size_t len = std::min(strlen(message), shared::SharedData::size - 1);
+
+        // Using memcpy to copy data into the mapped memory
+        memcpy(memory, message, len);
+    }
+}
 
 void max::init() {
 
+    if (pthread_create(&thread, nullptr, worker, shared::data) != 0) {
+        perror("pthread_created");
+        abort();
+    }
 }
 
 void max::run() {
-
+    pthread_join(thread, nullptr);
 }
 
