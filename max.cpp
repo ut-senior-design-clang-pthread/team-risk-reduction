@@ -9,11 +9,13 @@ namespace {
 
     void *worker(void* memory) {
         // Now write some data into the shared memory
-        const char* message = "Hello from the max worker thread using mmap!";
+        const char* message = "This is from max worker thread";
         std::size_t len = std::min(strlen(message), shared::SharedData::size - 1);
 
         // Using memcpy to copy data into the mapped memory
         memcpy(memory, message, len);
+
+        return nullptr;
     }
 }
 
