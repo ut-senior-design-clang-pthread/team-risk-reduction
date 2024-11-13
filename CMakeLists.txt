@@ -9,6 +9,8 @@ add_executable(team_risk_reduction main.cpp
         isaac.cpp timothy.cpp)
 target_link_options(team_risk_reduction PRIVATE "-lpthread")
 
+target_precompile_headers(team_risk_reduction PRIVATE header.h)
+
 if (ENABLE_THREAD_SANITIZER)
     target_compile_options(team_risk_reduction PRIVATE
             -fsanitize=thread
