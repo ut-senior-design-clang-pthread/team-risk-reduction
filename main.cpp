@@ -17,9 +17,10 @@ int main()
 
 namespace shared
 {
-    SharedData *const data = init();
 
-    SharedData* init()
+namespace
+{
+     SharedData* init()
     {
         SharedData *shared_mem = nullptr;
 
@@ -33,6 +34,10 @@ namespace shared
 
         return shared_mem;
     }
+}
+
+    SharedData *const data = init();
+
 }
 
 

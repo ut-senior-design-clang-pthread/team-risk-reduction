@@ -42,6 +42,4 @@ namespace shared
     };
 
     extern SharedData *const data;
-
-    SharedData* init();
 }
