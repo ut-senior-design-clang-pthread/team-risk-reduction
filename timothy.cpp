@@ -6,11 +6,15 @@
 
 namespace {
     pthread_t th;
-    void *func(void *shared_memory)
+    void *worker(void *shared_memory)
     {
+        //read from memory
         auto *data = static_cast<shared::SharedData*>(shared_memory);
-        std::print("{}", data->as_string_view());
 
+        //write to shared memory
+        char msg[] = "Hello World";
+        memcpy(data, msg, sizeof(msg));
+        std::print("{}", data->as_string_view());
         return nullptr;
     }
 }
