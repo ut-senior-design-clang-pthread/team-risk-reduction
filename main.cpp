@@ -20,6 +20,11 @@ namespace shared
 
 namespace
 {
+    void cleanup(void)
+    {
+        munmap(data, SharedData::size);
+    }
+
      SharedData* init()
     {
         SharedData *shared_mem = nullptr;
@@ -32,8 +37,12 @@ namespace
             abort();
         }
 
+        atexit(cleanup);
+
         return shared_mem;
     }
+
+
 }
 
     SharedData *const data = init();
@@ -43,7 +52,6 @@ namespace
     {
         return {reinterpret_cast<const char*>(this)};
     }
-
 }
 
 
