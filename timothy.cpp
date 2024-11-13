@@ -6,10 +6,9 @@
 
 namespace {
     pthread_t th;
-    void *func(void *shared_mem)
+    void *func(void *shared_memory)
     {
-        auto *data = static_cast<shared::SharedData*>(shared_mem);
-        std::cout << "Reading from memory:" << std::endl;
+        auto *data = static_cast<shared::SharedData*>(shared_memory);
         std::print("{}", data->as_string_view());
 
         return nullptr;
